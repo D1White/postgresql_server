@@ -6,6 +6,7 @@ import { createConnection } from 'typeorm'
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import { UserCtrl } from './controllers/user.controller'
+import { ProfileCtrl } from './controllers/profile.controller'
 
 createConnection()
   .then(async (connection) => {
@@ -22,6 +23,12 @@ createConnection()
     app.post('/users', UserCtrl.create)
     app.patch('/users/:id', UserCtrl.update)
     app.delete('/users/:id', UserCtrl.delete)
+
+    app.get('/profiles', ProfileCtrl.index)
+    app.get('/profiles/:id', ProfileCtrl.show)
+    app.post('/profiles', ProfileCtrl.create)
+    app.patch('/profiles/:id', ProfileCtrl.update)
+    app.delete('/profiles/:id', ProfileCtrl.delete)
 
     app.listen(process.env.PORT, () => {
       console.log(`SERVER RUNNING at http://localhost:${process.env.PORT}`)

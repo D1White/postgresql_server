@@ -1,5 +1,5 @@
 import { Entity, Column, ManyToOne } from 'typeorm'
-import { IsEnum, Length, IsDate } from 'class-validator'
+import { IsEnum, Length, IsDateString } from 'class-validator'
 
 import Model from './Model'
 import { User } from './User'
@@ -19,8 +19,8 @@ export class Profile extends Model {
   gender: string
 
   @Column({ nullable: false })
-  @IsDate()
-  birthdate: Date
+  @IsDateString()
+  birthdate: string
 
   @Column({ nullable: false })
   @Length(2, 30)
