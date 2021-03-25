@@ -18,7 +18,10 @@ class UserController {
     try {
       const id = req.params.id
 
-      const user = await User.findOne(id)
+      const user = await User.createQueryBuilder('user')
+        .leftJoinAndSelect('user.profiles', 'profile')
+        .where('user.id = :id', { id })
+        .getOne()
 
       if (!user) {
         res.status(404).json({ user: 'User not found' })
