@@ -5,8 +5,8 @@ import 'reflect-metadata'
 import { createConnection } from 'typeorm'
 import express, { Request, Response } from 'express'
 import cors from 'cors'
-import { UserCtrl } from './controllers/user.controller'
-import { ProfileCtrl } from './controllers/profile.controller'
+import { usersRouter } from './routers/user.router'
+import { profilesRouter } from './routers/profiles.router'
 
 createConnection()
   .then(async (connection) => {
@@ -18,34 +18,12 @@ createConnection()
       res.json('succes')
     })
 
-    app.get('/users', UserCtrl.index)
-    app.get('/users/:id', UserCtrl.show)
-    app.post('/users', UserCtrl.create)
-    app.patch('/users/:id', UserCtrl.update)
-    app.delete('/users/:id', UserCtrl.delete)
+    app.use('/api/users', usersRouter)
 
-    app.get('/profiles', ProfileCtrl.index)
-    app.get('/profiles/:id', ProfileCtrl.show)
-    app.post('/profiles', ProfileCtrl.create)
-    app.patch('/profiles/:id', ProfileCtrl.update)
-    app.delete('/profiles/:id', ProfileCtrl.delete)
+    app.use('/api/profiles', profilesRouter)
 
     app.listen(process.env.PORT, () => {
       console.log(`SERVER RUNNING at http://localhost:${process.env.PORT}`)
     })
-
-    // console.log("Inserting a new user into the database...");
-    // const user = new User();
-    // user.firstName = "Timber";
-    // user.lastName = "Saw";
-    // user.age = 25;
-    // await connection.manager.save(user);
-    // console.log("Saved a new user with id: " + user.id);
-
-    // console.log("Loading users from the database...");
-    // const users = await connection.manager.find(User);
-    // console.log("Loaded users: ", users);
-
-    // console.log("Here you can setup and run express/koa/any other framework.");
   })
   .catch((error) => console.log(error))
