@@ -20,6 +20,8 @@ createConnection()
     app.get('/users', UserCtrl.index)
     app.get('/users/:id', UserCtrl.show)
     app.post('/users', UserCtrl.create)
+    app.patch('/users/:id', UserCtrl.update)
+    app.delete('/users/:id', UserCtrl.delete)
 
     app.listen(process.env.PORT, () => {
       console.log(`SERVER RUNNING at http://localhost:${process.env.PORT}`)

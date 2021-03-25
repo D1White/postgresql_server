@@ -16,9 +16,9 @@ class UserController {
 
   async show(req: Request, res: Response) {
     try {
-      const uuid = req.params.id
+      const id = req.params.id
 
-      const user = await User.findOne({ uuid })
+      const user = await User.findOne(id)
 
       if (!user) {
         res.status(404).json({ user: 'User not found' })
@@ -55,9 +55,9 @@ class UserController {
 
   async update(req: Request, res: Response) {
     try {
-      const uuid = req.params.id
+      const id = req.params.id
 
-      const user = await User.findOne({ uuid })
+      const user = await User.findOne(id)
 
       if (!user) {
         res.status(404).json({ user: 'User not found' })
@@ -72,6 +72,25 @@ class UserController {
       await user.save()
 
       return res.json(user)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  }
+
+  async delete(req: Request, res: Response) {
+    try {
+      const id = req.params.id
+
+      const user = await User.findOne(id)
+
+      if (!user) {
+        res.status(404).json({ user: 'User not found' })
+        return
+      }
+
+      await user.remove()
+
+      return res.status(204)
     } catch (error) {
       res.status(500).json(error)
     }
