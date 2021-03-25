@@ -19,8 +19,6 @@ class ProfileController {
     try {
       const id = req.params.id
 
-      // const profile = await Profile.findOne(id)
-
       const profile = await Profile.createQueryBuilder('profile')
         .leftJoinAndSelect('profile.user', 'user')
         .where('profile.id = :id', { id })

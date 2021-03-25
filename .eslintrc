@@ -23,6 +23,15 @@
     "comma-dangle": [2, "always-multiline"],
     "eqeqeq": [2, "always"],
     "semi": [2, "never"],
-    "quotes": [2, "single"]
+    "quotes": [2, "single"],
+    "@typescript-eslint/explicit-module-boundary-types": ["error"],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": false
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/no-extra-non-null-assertion": 2
   }
 }

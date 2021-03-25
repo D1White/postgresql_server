@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { validate } from 'class-validator'
 
 import { User } from '../entity/User'
+import { generateMD5 } from '../utils/generateHash'
 
 class UserController {
   async index(_: Request, res: Response) {
@@ -39,7 +40,7 @@ class UserController {
       const data = {
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: generateMD5(req.body.password + process.env.SECRET_KEY),
         isAdmin: req.body.isAdmin,
       }
 
