@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+		"project": "tsconfig.json",
+		"tsconfigRootDir": "."
+	},
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "comma-dangle": [2, "always-multiline"],
+    "eqeqeq": [2, "always"],
+    "semi": [2, "never"],
+    "quotes": [2, "single"]
+  }
+}

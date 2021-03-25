@@ -1,0 +1,35 @@
+{
+   "name": "postgersql_test",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "@types/cors": "^2.8.10",
+      "@types/express": "^4.17.11",
+      "@types/node": "^8.0.29",
+      "@types/uuid": "^8.3.0",
+      "@typescript-eslint/eslint-plugin": "^4.19.0",
+      "@typescript-eslint/parser": "^4.19.0",
+      "eslint": "^7.22.0",
+      "eslint-config-prettier": "^8.1.0",
+      "eslint-plugin-prettier": "^3.3.1",
+      "nodemon": "^2.0.7",
+      "ts-node": "^3.3.0",
+      "typescript": "3.3.3333"
+   },
+   "dependencies": {
+      "class-validator": "^0.13.1",
+      "cors": "^2.8.5",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "pg": "^8.4.0",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.31",
+      "uuid": "^8.3.2"
+   },
+   "scripts": {
+      "nodemon": "nodemon",
+      "dev": "ts-node src/server.ts",
+      "start": "tsc && node build/server.js",
+      "lint": "eslint . --ext .ts"
+   }
+}
